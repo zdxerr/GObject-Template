@@ -1,0 +1,19 @@
+
+GTK_CFLAGS = $(shell pkg-config gtk+-2.0 --cflags)
+GTK_LIBS = $(shell pkg-config gtk+-2.0 --libs)
+
+CFLAGS = -ansi -pedantic -O2 -Wall $(GTK_CFLAGS)
+LFLAGS = $(GTK_LIBS)
+
+CC = gcc
+RM = rm
+
+all: <prefix_lower_case>_<typename_lower_case>.o
+
+# Compile and Assemble C Source Files into Object Files
+%.o: %.c %.h %_private.h
+	$(CC) -c $(CFLAGS) $*.c
+
+clean: 
+	$(RM) <prefix_lower_case>_<typename_lower_case>.o
+
